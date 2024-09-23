@@ -1,8 +1,10 @@
 import React from "react";
 import Testimonials from "./Testimonials";
+import Footer from "./Footer";
 
 const Hero = () => {
   return (
+   
     <div className="hero min-h-screen relative">
       {/* Video Background */}
       <video
@@ -29,7 +31,6 @@ const Hero = () => {
           {/* <button className="btn btn-primary">Get Started</button> */}
         </div>
       </div>
-      
     </div>
     
   );

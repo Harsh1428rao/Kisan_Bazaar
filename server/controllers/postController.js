@@ -1,9 +1,17 @@
 const Post = require('../models/Post');
 const User = require('../models/User');
 
+// Assuming itemImages is defined somewhere accessible
+const itemImages = {
+  vegetables: 'assets/image/Vegetables.png',
+  rice: 'assets/image/Rice1.png',
+  fruits: 'assets/image/Fruits.png',
+  pulses: 'assets/image/Pulses.png',
+};
+
 // Create a new post
 exports.createPost = async (req, res) => {
-  const { description, plants, amount, quantity, mobileNumber } = req.body;
+  const { itemType, description, plants, amount, quantity, mobileNumber } = req.body;
   const userId = req.user.userId; // Extract userId from the request object
 
   try {
@@ -13,8 +21,14 @@ exports.createPost = async (req, res) => {
       return res.status(404).json({ message: 'User not found' });
     }
 
+    // Ensure the itemType is valid
+    if (!itemImages[itemType]) {
+      return res.status(400).json({ message: 'Invalid item type' });
+    }
+
     // Create a new post
     const newPost = new Post({
+      imagePath: itemImages[itemType], // Use the correct image path based on itemType
       userId,
       farmerName: user.name, // Set the farmer's name from the User schema
       mobileNumber, // Use the mobile number provided in the request body

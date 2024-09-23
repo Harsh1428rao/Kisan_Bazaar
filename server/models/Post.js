@@ -12,8 +12,9 @@ const postSchema = new mongoose.Schema({
     required: true,
   },
   mobileNumber: {
-    type: String, // Or use Number if you prefer
+    type: String,
     required: true,
+    match: /^[0-9]{10}$/, // Example regex for a 10-digit number
   },
   description: {
     type: String,

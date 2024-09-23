@@ -3,7 +3,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="footer bg-base-200 text-base-content p-10">
+    <footer className="footer bg-base-200 text-base-content p-10 bg-green-200">
       <aside>
         <svg
           width="50"
@@ -19,9 +19,9 @@ const Footer = () => {
           ></path>
         </svg>
         <p>
-          ACME Industries Ltd.
+          Kisan Bazzar.
           <br />
-          Providing reliable tech since 1992
+          Providing reliable Solution to Contracting
         </p>
       </aside>
       <nav>

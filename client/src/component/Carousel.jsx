@@ -1,33 +1,31 @@
 // Carousel.js
-import React, { useEffect, useState } from 'react';
-import slide1 from '../assets/image/farmer2.jpg'; // Adjust the path if needed
-import slide2 from '../assets/image/farmer3.jpg';
+import React from 'react';
+import slide1 from '../assets/image/farmer3.jpg'; // Adjust the path if needed
+
 const Carousel = () => {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const slides = [
-        slide1, slide2,slide1
-    ];
-    const slideCount = slides.length;
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setCurrentIndex((prevIndex) => (prevIndex + 1) % slideCount);
-        }, 6000); // Slide duration
-
-        return () => clearInterval(interval);
-    }, [slideCount]);
-
-    const progress = ((currentIndex + 1) / slideCount) * 100;
+    const slides = [slide1]; // Only one image
+    const progress = 100; // No need for dynamic progress since there's only one slide
 
     return (
-        <div className="relative overflow-hidden">
-            <div className="flex transition-transform duration-1000 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
+        <div className="relative overflow-hidden" aria-label="Image carousel">
+            <div className="flex transition-transform duration-1000 ease-in-out">
                 {slides.map((src, index) => (
-                    <div key={index} className="w-full flex-shrink-0 h-64 flex items-center justify-center">
-                        <img src={src} alt={`Slide ${index + 1}`} className="w-full h-full object-cover" />
+                    <div key={index} className="w-full flex-shrink-0 h-40 flex items-center justify-center relative">
+                        <img 
+                            src={src} 
+                            alt={`Slide ${index + 1}`} 
+                            className="w-full h-full object-cover shadow-lg" // Apply shadow to the entire image
+                        />
+                        {/* Text Overlay */}
+                        <div className="hero-overlay bg-opacity-60 bg-black absolute top-0 left-0 w-full h-full  inset-0 flex items-center justify-center">
+                        <h1 className="text-white text-4xl font-bold  bg-opacity-50 p-2">
+                                KisaanBazaar
+                            </h1>
+                        </div>
                     </div>
-                ))}
+                ))}   
             </div>
+            {/* Optional bottom progress bar if needed */}
             <div className="absolute bottom-0 left-0 w-full h-1 bg-gray-200">
                 <div className="h-full bg-blue-500" style={{ width: `${progress}%` }} />
             </div>
