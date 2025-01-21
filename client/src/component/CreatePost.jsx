@@ -48,14 +48,14 @@ const CreatePost = () => {
   const handleConfirm = async () => {
     try {
       if (isEditing) {
-        await axios.put(`http://localhost:5000/api/posts/${editingPostId}`, formData, {
+        await axios.put(`https://kisan-bazaar-5.onrender.com/api/posts/${editingPostId}`, formData, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
         });
         alert('Post updated successfully!');
       } else {
-        await axios.post('http://localhost:5000/api/posts/', formData, {
+        await axios.post('https://kisan-bazaar-5.onrender.com/api/posts/', formData, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -104,7 +104,7 @@ const CreatePost = () => {
 
   const handleDelete = async (postId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/posts/${postId}`, {
+      await axios.delete(`https://kisan-bazaar-5.onrender.com/api/posts/${postId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -118,7 +118,7 @@ const CreatePost = () => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/posts/', {
+      const response = await axios.get('https://kisan-bazaar-5.onrender.com/api/posts/', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -291,7 +291,7 @@ const FarmerPosts = ({ token, onDelete, onUpdate }) => {
 
   const fetchPosts = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/posts/', {
+      const response = await axios.get('https://kisan-bazaar-5.onrender.com/api/posts/', {
         headers: {
           Authorization: `Bearer ${token}`,
         },
