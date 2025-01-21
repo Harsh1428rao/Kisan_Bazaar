@@ -16,7 +16,7 @@ const Home = () => {
         const token = localStorage.getItem('token');
         if (token) {
           // Make an API request to verify the token and get the user role
-          const response = await axios.get('http://localhost:5000/api/auth/profile', {
+          const response = await axios.get('https://kisan-bazaar-5.onrender.com/api/auth/profile', {
             headers: {
               Authorization: `Bearer ${token}`,
             },
