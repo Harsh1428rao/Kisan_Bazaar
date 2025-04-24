@@ -1,12 +1,20 @@
 const express = require('express');
-const { register, login,updateUser,getUser } = require('../controllers/authController');
 const router = express.Router();
-// Register route
-router.post('/register', register);
-const protect = require('../middleware/authMiddleware'); // Ensure the correct path to your middleware file
-// Login route
-router.post('/login', login);
-router.put('/update', protect, updateUser);
-router.get('/profile', protect, getUser); // Protected route to get user details
+const authController = require('../controllers/authController');
+const protect = require('../middleware/authMiddleware');
+const upload = require('../middleware/upload'); // Multer middleware
+
+// ✅ Register route with photo & esign upload
+router.post(
+  '/register',authController.register);
+
+// ✅ Login route
+router.post('/login', authController.login);
+
+// ✅ Protected route to update user
+router.put('/update', protect, authController.updateUser);
+
+// ✅ Protected route to get user profile
+router.get('/profile', protect, authController.getUser);
 
 module.exports = router;

@@ -86,7 +86,7 @@ function FarmerDash() {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.href = 'https://kisan-bazaar-nine.vercel.app/login';
+    window.location.href = '/';
   };
 
   return (

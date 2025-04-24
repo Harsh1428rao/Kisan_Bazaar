@@ -40,7 +40,7 @@ const Home = () => {
   }, []);
 
   if (loading) {
-    return <div>Loading...</div>; // Show loading indicator while checking the role
+    return <div className='text-center justify-center'>Loading...</div>; // Show loading indicator while checking the role
   }
 
   if (userRole === 'farmer') {
